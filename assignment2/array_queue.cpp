@@ -17,15 +17,12 @@ class Array_List
         }
         bool enqueue(int val)
         {
-            if (size = capacity)
+            if (size == capacity)
             {
                 return false;
             }
-            if (front != back)
-            {
-                back++;
-            }
             array[back % capacity] = val;
+            back++;
             size++;
             return true;
         }
@@ -42,3 +39,32 @@ class Array_List
             return result;
         }
 };
+
+using std::cout;
+using std::endl;
+
+int main()
+{
+    Array_List test = Array_List(5);
+    int should_be_null = test.dequeue();
+    if (should_be_null != NULL)
+    {
+        cout << "This list broke!" << endl;
+    }
+    test.enqueue(1);
+    test.enqueue(2);
+    test.enqueue(3);
+    test.enqueue(4);
+    test.enqueue(5);
+    bool should_be_false = test.enqueue(6);
+    if (should_be_false != false)
+    {
+        cout << "This list broke!" << endl;
+    }
+    int should_be_one = test.dequeue();
+    if (should_be_one != 1)
+    {
+        cout << should_be_one << endl;
+        cout << "This list broke!" << endl;
+    }
+}
