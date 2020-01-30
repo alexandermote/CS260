@@ -13,7 +13,6 @@ class Linked_List
 {
     Node *head;
     Node *tail;
-    int size;
     public:
         /* Linked_List()
         {
@@ -54,8 +53,28 @@ int main()
 {
     Linked_List list;
 
-    list.enqueue(42);
-    int output = list.dequeue();
+    list.enqueue(1);
+    int should_be_one = list.dequeue();
 
-    cout << output << endl;
+    if (should_be_one != 1)
+    {
+        cout << should_be_one << endl << "This line broke!" << endl;
+    }
+    
+    list.enqueue(1);
+    list.enqueue(2);
+
+    int should_still_be_one = list.dequeue();
+
+    if (should_be_one != 1)
+    {
+        cout << should_still_be_one << endl << "This line broke!" << endl;
+    }
+
+    int should_be_two = list.dequeue();
+
+    if (should_be_two != 2)
+    {
+        cout << should_be_two << endl << "This line broke!" << endl;
+    }
 }
